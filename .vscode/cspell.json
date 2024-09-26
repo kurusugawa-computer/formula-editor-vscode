@@ -1,0 +1,13 @@
+{
+  "words": [],
+  "ignorePaths": [
+    ".github",
+    ".vscode",
+    ".devcontainer",
+    ".gitignore",
+    "eslint.config.mjs",
+    "package.json",
+    "tsconfig.json",
+    "*.md"
+  ]
+}

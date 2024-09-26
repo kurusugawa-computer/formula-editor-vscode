@@ -1,61 +1,71 @@
-# kciguild-template
+# formula-editor-vscode README
 
-## 使い方 (自動)
+This is the README for your extension "formula-editor-vscode". After writing up a brief description, we recommend including the following sections.
 
-[kurusugawa-computer/kciguild-init](https://github.com/kurusugawa-computer/kciguild-init)が使えます
+## Features
 
-```console
-$ go get -u github.com/kurusugawa-computer/kciguild-init/cmd/kciguild-init
-$ kciguild-init -description "This is test repository" foo-var
-Reading ~/.config/hub
-Creating repository: kurusugawa-computer/kciguild-foo-var
-Cloning kciguild-foo-var into in-memory file system
-Rewriting README.md and creating commit
-Pushing changes
-Adding branch protection rules for master
-Adding branch protection rules for develop
-Granting permission "push" to kci-guild
-Granting permission "admin" to kci-shine
+Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
 
-	URL: https://github.com/kurusugawa-computer/kciguild-foo-var
+For example if there is an image subfolder under your extension project workspace:
 
-```
+\!\[feature X\]\(images/feature-x.png\)
 
-## 使い方 (手動)
+> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
-https://github.com/kurusugawa-computer/kciguild-template の、「Use this template」をクリック
+## Requirements
 
-以下の設定を行う
+If you have any requirements or dependencies, add a section describing those and how to install and configure them.
 
-### 手動で設定してください
+## Extension Settings
 
-#### Settings > Collaborators& teams
+Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-Add a team より、
+For example:
 
- * kci-shine に Admin
- * kci-guild に Write
+This extension contributes the following settings:
 
-を付与
+* `myExtension.enable`: Enable/disable this extension.
+* `myExtension.thing`: Set to `blah` to do something.
 
-#### Settings > Branches > Branch protection rules
+## Known Issues
 
-1． Add rules をクリック
+Calling out known issues can help limit users opening duplicate issues against your extension.
 
-2. Branch name pattern に master と入力
+## Release Notes
 
-3. 以下項目にチェックする
+Users appreciate release notes as you update your extension.
 
- * Require pull request reviews before merging
- * Dismiss stale pull request approvals when new commits are pushed
- * Require review from Code Owners
+### 1.0.0
 
-4. Create をクリック
+Initial release of ...
 
-5. Add rules をクリック
+### 1.0.1
 
-6. Branch name pattern に develop と入力し、masterと同様にチェックを入れてCreate
+Fixed issue #.
 
-#### README.mdの内容の削除
+### 1.1.0
 
-以上が完了したらこのREADME.mdの一番上の**kciguild-template**をリポジトリ名にし、他の部分を消してコミットしてください。
+Added features X, Y, and Z.
+
+---
+
+## Following extension guidelines
+
+Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+
+* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+
+## Working with Markdown
+
+You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+
+* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
+* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
+* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+
+## For more information
+
+* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
+* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+
+**Enjoy!**
