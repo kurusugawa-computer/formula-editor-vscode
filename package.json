@@ -9,13 +9,15 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "formula-editor-vscode.helloWorld",
-        "title": "Hello World"
+        "command": "formula-editor-vscode.editor",
+        "title": "Open math editor"
       }
     ]
   },
