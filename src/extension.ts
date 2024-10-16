@@ -60,17 +60,25 @@ function getWebviewContent(_extensionUri: vscode.Uri, webview: vscode.Webview) {
     "dist",
     "mathlive.js"
   );
+  const stylesPathOnDisk = vscode.Uri.joinPath(
+    _extensionUri,
+    "src",
+    "public",
+    "styles.css"
+  );
 
   const scriptUri = webview.asWebviewUri(scriptPathOnDisk);
+  const stylesUri = webview.asWebviewUri(stylesPathOnDisk);
+
   return `<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>untitled</title>
+    <link href="${stylesUri}" rel="stylesheet">
     <script src=${scriptUri}></script>
   </head>
-  <body style="text-align: center;">
-    <math-field style="margin-top: 40px; font-size: large;">x=\\frac{-b\\pm \\sqrt{b^2-4ac}}{2a}</math-field>
+  <body>
+    <math-field>x=\\frac{-b\\pm \\sqrt{b^2-4ac}}{2a}</math-field>
     <script>
     const mf = document.querySelector('math-field');
     mf.mathVirtualKeyboardPolicy = "sandboxed";
