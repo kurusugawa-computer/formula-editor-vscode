@@ -16,6 +16,14 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.ViewColumn.Two, // Editor column to show the new webview panel in.
         {} // Webview options. More on these later.
       );
+      panel.webview.options = {
+        enableScripts: true,
+      };
+
+      panel.webview.html = getWebviewContent(
+        context.extensionUri,
+        panel.webview
+      );
     }
   );
 
@@ -42,6 +50,33 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(openEditor);
+}
+
+function getWebviewContent(_extensionUri: vscode.Uri, webview: vscode.Webview) {
+  const scriptPathOnDisk = vscode.Uri.joinPath(
+    _extensionUri,
+    "node_modules",
+    "mathlive",
+    "dist",
+    "mathlive.js"
+  );
+
+  const scriptUri = webview.asWebviewUri(scriptPathOnDisk);
+  return `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>untitled</title>
+    <script src=${scriptUri}></script>
+  </head>
+  <body style="text-align: center;">
+    <math-field style="margin-top: 40px; font-size: large;">x=\\frac{-b\\pm \\sqrt{b^2-4ac}}{2a}</math-field>
+    <script>
+    const mf = document.querySelector('math-field');
+    mf.mathVirtualKeyboardPolicy = "sandboxed";
+    </script>
+  </body>
+</html>`;
 }
 
 // This method is called when your extension is deactivated
