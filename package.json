@@ -16,10 +16,19 @@
   "contributes": {
     "commands": [
       {
-        "command": "formula-editor-vscode.editor",
+        "command": "formula-editor-vscode.openEditor",
         "title": "Open math editor"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorFocus",
+          "command": "formula-editor-vscode.openEditor",
+          "group": "myGroup@1"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -47,6 +56,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "mathlive": "^0.101.0"
+    "mathlive": "^0.101.0",
+    "vscode-textmate-languageservice": "^3.0.1"
   }
 }
