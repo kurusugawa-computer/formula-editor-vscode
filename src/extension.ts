@@ -28,6 +28,31 @@ export function activate(context: vscode.ExtensionContext) {
         panel.webview,
         text ?? ""
       );
+
+      let range: vscode.Range;
+      if (cur_selection !== undefined) {
+        range = new vscode.Range(cur_selection.start, cur_selection.end);
+      }
+      let prevTextLength = text === undefined ? 0 : text.length;
+
+      panel.webview.onDidReceiveMessage(
+        (message) => {
+          const edit = new vscode.WorkspaceEdit();
+          if (doc?.uri !== undefined && cur_selection !== undefined) {
+            edit.replace(doc?.uri, range, message.text);
+            vscode.workspace.applyEdit(edit);
+            range = new vscode.Range(
+              range.start.line,
+              range.start.character,
+              range.end.line,
+              range.end.character + (message.text.length - prevTextLength)
+            );
+            prevTextLength = message.text.length;
+          }
+        },
+        undefined,
+        context.subscriptions
+      );
     }
   );
 
@@ -108,10 +133,22 @@ function getWebviewContent(
     <script src=${scriptUri}></script>
   </head>
   <body>
-    <math-field>${content}</math-field>
+    <math-field id="formula">${content}</math-field>
     <script>
     const mf = document.querySelector('math-field');
     mf.mathVirtualKeyboardPolicy = "sandboxed";
+
+    const vscode = acquireVsCodeApi();
+    var prevKatex = document.getElementById("formula").value;
+    setInterval(() => {
+      var katex = document.getElementById("formula").value;
+      if(prevKatex != katex){
+        vscode.postMessage({
+          text: katex,
+        })
+      }
+      prevKatex = katex
+    },1)
     </script>
   </body>
 </html>`;
