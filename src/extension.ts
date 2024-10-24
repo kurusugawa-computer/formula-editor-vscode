@@ -23,7 +23,33 @@ export function activate(context: vscode.ExtensionContext) {
       let cur_selection = editor?.selection;
       let text = doc?.getText(cur_selection);
 
-      panel.webview.html = getWebviewContent(
+      panel.webview.html = getWebviewEditor(
+        context.extensionUri,
+        panel.webview,
+        text ?? ""
+      );
+    }
+  );
+
+  const openLinkEditor = vscode.commands.registerCommand(
+    "formula-editor-vscode.openLinkEditor",
+    () => {
+      const panel = vscode.window.createWebviewPanel(
+        "formulaEditor", // Identifies the type of the webview. Used internally
+        "Formula Editor", // Title of the panel displayed to the user
+        vscode.ViewColumn.Two, // Editor column to show the new webview panel in.
+        {} // Webview options. More on these later.
+      );
+      panel.webview.options = {
+        enableScripts: true,
+      };
+
+      let editor = vscode.window.activeTextEditor;
+      let doc = editor?.document;
+      let cur_selection = editor?.selection;
+      let text = doc?.getText(cur_selection);
+
+      panel.webview.html = getWebviewEditor(
         context.extensionUri,
         panel.webview,
         text ?? ""
@@ -69,7 +95,7 @@ export function activate(context: vscode.ExtensionContext) {
         enableScripts: true,
       };
 
-      panel.webview.html = getWebviewContent(
+      panel.webview.html = getWebviewEditor(
         context.extensionUri,
         panel.webview,
         ""
@@ -100,10 +126,88 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(openEditor);
+  context.subscriptions.push(openLinkEditor);
   context.subscriptions.push(openEditorFromHover);
 }
 
-function getWebviewContent(
+function getWebviewEditor(
+  extensionUri: vscode.Uri,
+  webview: vscode.Webview,
+  content: string
+) {
+  const scriptPathOnDisk = vscode.Uri.joinPath(
+    extensionUri,
+    "node_modules",
+    "mathlive",
+    "dist",
+    "mathlive.js"
+  );
+  const stylesPathOnDisk = vscode.Uri.joinPath(
+    extensionUri,
+    "src",
+    "public",
+    "styles.css"
+  );
+  const imagePathOnDisk = vscode.Uri.joinPath(
+    extensionUri,
+    "src",
+    "public",
+    "copy.svg"
+  );
+
+  const scriptUri = webview.asWebviewUri(scriptPathOnDisk);
+  const stylesUri = webview.asWebviewUri(stylesPathOnDisk);
+  const imageUri = webview.asWebviewUri(imagePathOnDisk);
+
+  return `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="${stylesUri}" rel="stylesheet">
+    <script src=${scriptUri}></script>
+  </head>
+  <body>
+    <math-field id="formula">${content}</math-field>
+    <div id="copy-box">
+      <div id="latex-text"></div>
+      <div id="copy-button">
+        <img id="icon" src=${imageUri} width="15px" height="20px" title="Copy latex format text" onClick=copy()>
+        <p id="copied-text" class="hidden">Copied!</p>
+      </div>
+    </div>
+    <script>
+      const mf = document.querySelector('math-field');
+      mf.mathVirtualKeyboardPolicy = "sandboxed";
+
+      let formulaElement = document.getElementById('formula');
+      let latexElement = document.getElementById('latex-text');
+      setInterval(() => {
+        latexElement.textContent = formulaElement.value;
+      },1)
+
+      function copy() {
+        let latexElement = document.getElementById('latex-text');
+        navigator.clipboard.writeText(latexElement.textContent);
+      }
+
+      const copiedText = document.getElementById('copied-text');
+      const icon = document.getElementById('icon');
+
+      icon.addEventListener('click', () => {
+        copiedText.classList.remove('hidden');
+        copiedText.classList.add('popup-message');
+      });
+
+      copiedText.addEventListener('animationend', () => {
+        copiedText.classList.remove('popup-message');
+        copiedText.classList.add('hidden');
+      });
+    </script>
+  </body>
+</html>`;
+}
+
+function getWebviewLinkEditor(
   _extensionUri: vscode.Uri,
   webview: vscode.Webview,
   content: string
