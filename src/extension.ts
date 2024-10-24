@@ -146,8 +146,8 @@ function getWebviewContent(
         vscode.postMessage({
           text: katex,
         })
+        prevKatex = katex
       }
-      prevKatex = katex
     },1)
     </script>
   </body>
