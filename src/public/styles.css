@@ -78,3 +78,10 @@ math-field {
     pointer-events: none;
   }
 }
+
+#explanation {
+  margin: 8px auto 0 auto;
+  text-align: center;
+  max-width: 80%;
+  word-break: break-all;
+}

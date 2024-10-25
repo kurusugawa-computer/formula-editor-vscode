@@ -59,7 +59,11 @@ export function activate(context: vscode.ExtensionContext) {
       panel.webview.html = getWebviewLinkedEditor(
         context.extensionUri,
         panel.webview,
-        text ?? ""
+        text ?? "",
+        doc?.fileName ?? "unknown",
+        cur_selection?.start.line !== undefined
+          ? (cur_selection?.start.line + 1).toString()
+          : "unknown"
       );
 
       let range: vscode.Range;
@@ -217,7 +221,9 @@ function getWebviewEditor(
 function getWebviewLinkedEditor(
   _extensionUri: vscode.Uri,
   webview: vscode.Webview,
-  content: string
+  content: string,
+  fileName: string,
+  line: string
 ) {
   const scriptPathOnDisk = vscode.Uri.joinPath(
     _extensionUri,
@@ -245,6 +251,9 @@ function getWebviewLinkedEditor(
   </head>
   <body>
     <math-field id="formula">${content}</math-field>
+    <p id="explanation">
+      (This formula is linked to part of line ${line} in ${fileName})
+    </p>
     <script>
     const mf = document.querySelector('math-field');
     mf.mathVirtualKeyboardPolicy = "sandboxed";
