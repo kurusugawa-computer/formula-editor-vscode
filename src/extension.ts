@@ -92,7 +92,7 @@ export function activate(context: vscode.ExtensionContext) {
       );
     }
   );
-
+  /*
   const openEditorFromHover = vscode.commands.registerCommand(
     "formula-editor-vscode.openEditorFromHover",
     () => {
@@ -135,10 +135,10 @@ export function activate(context: vscode.ExtensionContext) {
       }
     })()
   );
-
+*/
   context.subscriptions.push(openEditor);
   context.subscriptions.push(openLinkEditor);
-  context.subscriptions.push(openEditorFromHover);
+  //context.subscriptions.push(openEditorFromHover);
 }
 
 function getWebviewEditor(
