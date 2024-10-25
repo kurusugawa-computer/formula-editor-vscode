@@ -9,6 +9,7 @@
     "package.json",
     "tsconfig.json",
     "webpack.config.js",
-    "*.md"
+    "*.md",
+    "src/public"
   ]
 }
