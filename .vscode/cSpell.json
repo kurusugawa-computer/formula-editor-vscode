@@ -8,6 +8,7 @@
     "eslint.config.mjs",
     "package.json",
     "tsconfig.json",
+    "webpack.config.js",
     "*.md"
   ]
 }
