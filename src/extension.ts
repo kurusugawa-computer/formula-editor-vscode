@@ -8,6 +8,11 @@ export function activate(context: vscode.ExtensionContext) {
   const openEditor = vscode.commands.registerCommand(
     "formula-editor-vscode.openEditor",
     () => {
+      let editor = vscode.window.activeTextEditor;
+      let doc = editor?.document;
+      let cur_selection = editor?.selection;
+      let text = doc?.getText(cur_selection);
+
       const panel = vscode.window.createWebviewPanel(
         "formulaEditor", // Identifies the type of the webview. Used internally
         "Formula Editor", // Title of the panel displayed to the user
@@ -17,11 +22,6 @@ export function activate(context: vscode.ExtensionContext) {
       panel.webview.options = {
         enableScripts: true,
       };
-
-      let editor = vscode.window.activeTextEditor;
-      let doc = editor?.document;
-      let cur_selection = editor?.selection;
-      let text = doc?.getText(cur_selection);
 
       panel.webview.html = getWebviewEditor(
         context.extensionUri,
@@ -32,11 +32,23 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   const openLinkEditor = vscode.commands.registerCommand(
-    "formula-editor-vscode.openLinkEditor",
+    "formula-editor-vscode.openLinkedEditor",
     () => {
+      let editor = vscode.window.activeTextEditor;
+      let doc = editor?.document;
+      let cur_selection = editor?.selection;
+      let text = doc?.getText(cur_selection);
+
+      if (text?.includes("\n")) {
+        vscode.window.showErrorMessage(
+          "Text must not contain line breaks in link mode."
+        );
+        return;
+      }
+
       const panel = vscode.window.createWebviewPanel(
-        "formulaEditor", // Identifies the type of the webview. Used internally
-        "Formula Editor", // Title of the panel displayed to the user
+        "formulaEditor(Linked)", // Identifies the type of the webview. Used internally
+        "Formula Editor(Linked)", // Title of the panel displayed to the user
         vscode.ViewColumn.Two, // Editor column to show the new webview panel in.
         {} // Webview options. More on these later.
       );
@@ -44,12 +56,7 @@ export function activate(context: vscode.ExtensionContext) {
         enableScripts: true,
       };
 
-      let editor = vscode.window.activeTextEditor;
-      let doc = editor?.document;
-      let cur_selection = editor?.selection;
-      let text = doc?.getText(cur_selection);
-
-      panel.webview.html = getWebviewEditor(
+      panel.webview.html = getWebviewLinkedEditor(
         context.extensionUri,
         panel.webview,
         text ?? ""
@@ -207,7 +214,7 @@ function getWebviewEditor(
 </html>`;
 }
 
-function getWebviewLinkEditor(
+function getWebviewLinkedEditor(
   _extensionUri: vscode.Uri,
   webview: vscode.Webview,
   content: string
