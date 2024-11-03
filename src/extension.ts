@@ -7,11 +7,7 @@ export function activate(context: vscode.ExtensionContext) {
   const openEditor = vscode.commands.registerCommand(
     "formula-editor-vscode.openEditor",
     () => {
-      // Get selected text
-      let editor = vscode.window.activeTextEditor;
-      let doc = editor?.document;
-      let cur_selection = editor?.selection;
-      let text = doc?.getText(cur_selection);
+      let text = getSelectedText();
 
       const panel = vscode.window.createWebviewPanel(
         "formulaEditor", // Identifies the type of the webview. Used internally
@@ -35,10 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
     "formula-editor-vscode.openLinkedEditor",
     () => {
       // Get selected text
-      let editor = vscode.window.activeTextEditor;
-      let doc = editor?.document;
-      let cur_selection = editor?.selection;
-      let text = doc?.getText(cur_selection);
+      let text = getSelectedText();
 
       if (text?.includes("\n")) {
         vscode.window.showErrorMessage(
@@ -56,6 +49,10 @@ export function activate(context: vscode.ExtensionContext) {
       panel.webview.options = {
         enableScripts: true,
       };
+
+      let editor = vscode.window.activeTextEditor;
+      let doc = editor?.document;
+      let cur_selection = editor?.selection;
 
       panel.webview.html = getWebviewLinkedEditor(
         context.extensionUri,
@@ -99,6 +96,15 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(openEditor);
   context.subscriptions.push(openLinkEditor);
+}
+
+function getSelectedText() {
+  let editor = vscode.window.activeTextEditor;
+  let doc = editor?.document;
+  let cur_selection = editor?.selection;
+  let text = doc?.getText(cur_selection);
+
+  return text;
 }
 
 // This method is called when your extension is deactivated
