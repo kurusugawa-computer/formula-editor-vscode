@@ -1,5 +1,3 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 
 // This method is called when your extension is activated
@@ -8,6 +6,7 @@ export function activate(context: vscode.ExtensionContext) {
   const openEditor = vscode.commands.registerCommand(
     "formula-editor-vscode.openEditor",
     () => {
+      // Get selected text
       let editor = vscode.window.activeTextEditor;
       let doc = editor?.document;
       let cur_selection = editor?.selection;
@@ -34,6 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
   const openLinkEditor = vscode.commands.registerCommand(
     "formula-editor-vscode.openLinkedEditor",
     () => {
+      // Get selected text
       let editor = vscode.window.activeTextEditor;
       let doc = editor?.document;
       let cur_selection = editor?.selection;
@@ -74,10 +74,13 @@ export function activate(context: vscode.ExtensionContext) {
 
       panel.webview.onDidReceiveMessage(
         (message) => {
+          // This code is called when the editor in webview is updated
           const edit = new vscode.WorkspaceEdit();
           if (doc?.uri !== undefined && cur_selection !== undefined) {
+            // Replace original text with latex format string of text in editor
             edit.replace(doc?.uri, range, message.text);
             vscode.workspace.applyEdit(edit);
+
             range = new vscode.Range(
               range.start.line,
               range.start.character,
@@ -92,53 +95,9 @@ export function activate(context: vscode.ExtensionContext) {
       );
     }
   );
-  /*
-  const openEditorFromHover = vscode.commands.registerCommand(
-    "formula-editor-vscode.openEditorFromHover",
-    () => {
-      const panel = vscode.window.createWebviewPanel(
-        "formulaEditor", // Identifies the type of the webview. Used internally
-        "Formula Editor", // Title of the panel displayed to the user
-        vscode.ViewColumn.Two, // Editor column to show the new webview panel in.
-        {} // Webview options. More on these later.
-      );
-      panel.webview.options = {
-        enableScripts: true,
-      };
 
-      panel.webview.html = getWebviewEditor(
-        context.extensionUri,
-        panel.webview,
-        ""
-      );
-    }
-  );
-
-  vscode.languages.registerHoverProvider(
-    "markdown",
-    new (class implements vscode.HoverProvider {
-      provideHover(
-        document: vscode.TextDocument,
-        position: vscode.Position,
-        _token: vscode.CancellationToken
-      ): vscode.ProviderResult<vscode.Hover> {
-        const commentCommandUri = vscode.Uri.parse(
-          `command:formula-editor-vscode.openEditorFromHover`
-        );
-        const contents = new vscode.MarkdownString(
-          `[Edit this formula](${commentCommandUri})`
-        );
-
-        contents.isTrusted = true;
-
-        return new vscode.Hover(contents);
-      }
-    })()
-  );
-*/
   context.subscriptions.push(openEditor);
   context.subscriptions.push(openLinkEditor);
-  //context.subscriptions.push(openEditorFromHover);
 }
 
 function getWebviewEditor(
