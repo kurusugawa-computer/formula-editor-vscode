@@ -17,11 +17,11 @@
     "commands": [
       {
         "command": "formula-editor-vscode.openEditor",
-        "title": "Open math editor"
+        "title": "数式エディタを開く"
       },
       {
         "command": "formula-editor-vscode.openLinkedEditor",
-        "title": "Open math editor(Linked)"
+        "title": "数式エディタを開く(リンクモード)"
       }
     ],
     "menus": {

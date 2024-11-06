@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       if (text?.includes("\n")) {
         vscode.window.showErrorMessage(
-          "Text must not contain line breaks in link mode."
+          "リンクモードでは改行を含むテキストは選択できません。"
         );
         return;
       }

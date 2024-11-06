@@ -41,13 +41,15 @@ export function getWebviewEditor(
     <div id="copy-box">
       <div id="latex-text"></div>
       <div id="copy-button">
-        <img id="icon" src=${imageUri} width="15px" height="20px" title="Copy latex format text" onClick=copy()>
-        <p id="copied-text" class="hidden">Copied!</p>
+        <img id="icon" src=${imageUri} width="15px" height="20px" title="latex形式でコピーする" onClick=copy()>
+        <p id="copied-text" class="hidden">コピーしました</p>
       </div>
     </div>
     <script>
       const mf = document.querySelector('math-field');
       mf.mathVirtualKeyboardPolicy = "sandboxed";
+
+      MathfieldElement.locale = "ja";
 
       let formulaElement = document.getElementById('formula');
       let latexElement = document.getElementById('latex-text');
@@ -111,7 +113,7 @@ export function getWebviewLinkedEditor(
   <body>
     <math-field id="formula">${content}</math-field>
     <p id="explanation">
-      (This formula is linked to part of line ${line} in ${fileName})
+      (この数式は ${fileName} の ${line} 行目とリンクされています)
     </p>
     <script>
     const mf = document.querySelector('math-field');

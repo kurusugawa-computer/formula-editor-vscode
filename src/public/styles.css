@@ -46,15 +46,15 @@ math-field {
 
 #copied-text {
   height: 15px;
-  width: 40px;
+  width: 70px;
   padding: 3px 10px;
   border-radius: 6px;
-  font-size: x-small;
+  font-size: xx-small;
   background: #71e84d;
   color: rgb(26, 26, 26);
   text-align: center;
   position: absolute;
-  right: -20px;
+  right: -40px;
   bottom: 20px;
 }
 
