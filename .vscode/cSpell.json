@@ -1,5 +1,5 @@
 {
-  "words": ["katex", "Katex", "mathlive"],
+  "words": ["katex", "Katex", "Mathfield", "mathlive"],
   "ignorePaths": [
     ".github",
     ".vscode",
