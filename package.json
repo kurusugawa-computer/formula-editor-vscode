@@ -1,7 +1,7 @@
 {
   "name": "formula-editor-vscode",
-  "displayName": "formula-editor-vscode",
-  "description": "",
+  "displayName": "Formula Editor",
+  "description": "WYSIWYG formula editor to get latex format string",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.93.0"
@@ -60,5 +60,9 @@
   "dependencies": {
     "mathlive": "^0.101.0",
     "vsce": "^2.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kurusugawa-computer/formula-editor-vscode"
   }
 }
