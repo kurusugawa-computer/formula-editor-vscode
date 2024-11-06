@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { getWebviewEditor, getWebviewLinkedEditor } from "./formulaEditor";
+import { getWebviewEditor } from "./formulaEditor";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -27,6 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
+  /*
   const openLinkEditor = vscode.commands.registerCommand(
     "formula-editor-vscode.openLinkedEditor",
     () => {
@@ -93,9 +94,10 @@ export function activate(context: vscode.ExtensionContext) {
       );
     }
   );
+  */
 
   context.subscriptions.push(openEditor);
-  context.subscriptions.push(openLinkEditor);
+  //  context.subscriptions.push(openLinkEditor);
 }
 
 function getSelectedText() {

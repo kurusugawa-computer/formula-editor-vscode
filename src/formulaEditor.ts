@@ -79,6 +79,7 @@ export function getWebviewEditor(
 </html>`;
 }
 
+/*
 export function getWebviewLinkedEditor(
   _extensionUri: vscode.Uri,
   webview: vscode.Webview,
@@ -134,3 +135,4 @@ export function getWebviewLinkedEditor(
   </body>
 </html>`;
 }
+*/

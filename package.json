@@ -18,10 +18,6 @@
       {
         "command": "formula-editor-vscode.openEditor",
         "title": "数式エディタを開く"
-      },
-      {
-        "command": "formula-editor-vscode.openLinkedEditor",
-        "title": "数式エディタを開く(リンクモード)"
       }
     ],
     "menus": {
@@ -29,11 +25,6 @@
         {
           "when": "editorFocus",
           "command": "formula-editor-vscode.openEditor",
-          "group": "myGroup@1"
-        },
-        {
-          "when": "editorFocus",
-          "command": "formula-editor-vscode.openLinkedEditor",
           "group": "myGroup@1"
         }
       ]
