@@ -48,7 +48,9 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "vsce:package": "vsce package",
+    "vsce:publish": "vsce publish"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.7",
@@ -66,6 +68,7 @@
   },
   "dependencies": {
     "mathlive": "^0.101.0",
+    "vsce": "^2.15.0",
     "vscode-textmate-languageservice": "^3.0.1"
   }
 }
