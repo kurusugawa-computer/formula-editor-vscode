@@ -48,6 +48,7 @@ export function getWebviewEditor(
     <script>
       const mf = document.querySelector('math-field');
       mf.mathVirtualKeyboardPolicy = "sandboxed";
+      mf.menuItems = mf.menuItems.filter(item => !(item.id == 'copy' || item.id == 'cut'));
 
       MathfieldElement.locale = "ja";
 
