@@ -4,6 +4,6 @@ All notable changes to the "formula-editor-vscode" extension will be documented 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## [0.0.1] - 2024-11-08
 
 - Initial release
