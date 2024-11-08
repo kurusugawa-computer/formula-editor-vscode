@@ -1,5 +1,5 @@
 {
-  "words": [],
+  "words": ["katex", "Katex", "Mathfield", "mathlive"],
   "ignorePaths": [
     ".github",
     ".vscode",
@@ -8,6 +8,8 @@
     "eslint.config.mjs",
     "package.json",
     "tsconfig.json",
-    "*.md"
+    "webpack.config.js",
+    "*.md",
+    "src/public"
   ]
 }
