@@ -2,6 +2,7 @@
   "name": "formula-editor-vscode",
   "displayName": "Formula Editor",
   "description": "WYSIWYG formula editor to get latex format string",
+  "publisher": "kurusugawa-computer",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.93.0"
