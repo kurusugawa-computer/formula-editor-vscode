@@ -10,6 +10,7 @@
     "tsconfig.json",
     "webpack.config.js",
     "*.md",
+    "*.txt",
     "src/public"
   ]
 }
