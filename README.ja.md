@@ -8,22 +8,22 @@
 [![GitHub stars](https://img.shields.io/github/stars/kurusugawa-computer/formula-editor-vscode.svg?style=flat-square&label=github%20stars)](https://github.com/kurusugawa-computer/formula-editor-vscode)
 [![GitHub Contributors](https://img.shields.io/github/contributors/kurusugawa-computer/formula-editor-vscode.svg?style=flat-square)](https://github.com/kurusugawa-computer/formula-editor-vscode/graphs/contributors)
 
-**Formula Editor** is a WYSIWYG editor that allows you to edit formulas in Markdown.
+**Formula Editor** は、Markdown 内の数式を編集できる WYSIWYG エディタです。
 
-## 🌟 Usage
+## 🌟 使い方
 
-- Select the formula in Markdown that you want to edit.
-- Select "Open Formula Editor" from the Command Palette or right-click.
-- The formula editor opens. Press the keyboard icon to input using the virtual keyboard
-- When you are finished editing, press the copy icon to copy the latex format string of the formula to the clipboard.。
+- 編集したい Markdown 内の数式を範囲選択します。
+- コマンドパレットまたは右クリックから「数式エディタを開く」を選択します。
+- 数式エディタが開きます。キーボードのアイコンを押すと仮想キーボードを用いて入力ができます。
+- 編集が終わったら、コピーアイコンを押すと数式の Latex 形式文字列がクリップボードにコピーされます。
 
 <img src="https://github.com/kurusugawa-computer/formula-editor-vscode/raw/main/images/usage.gif" alt="Basic Usage" width="1024">
 
-## 🔄 Changelog
+## 🔄 変更履歴
 
-For detailed updates, refer to the [CHANGELOG](CHANGELOG.md).
+詳細な更新については、 [CHANGELOG](CHANGELOG.md) を参照してください。
 
-## 🤝 Get Involved
+## 🤝 参加する
 
-- Report bugs or suggest features via [GitHub Issues](https://github.com/kurusugawa-computer/formula-editor-vscode/issues).
-- Share your feedback by leaving a review on the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kurusugawa-computer.formula-editor#review-details).
+- [GitHub Issues](https://github.com/kurusugawa-computer/formula-editor-vscode/issues)を通じてバグを報告したり、機能を提案してください。
+- [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=kurusugawa-computer.formula-editor#review-details)でレビューを残してフィードバックを共有してください。
