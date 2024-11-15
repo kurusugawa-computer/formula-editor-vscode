@@ -19,7 +19,7 @@
     "commands": [
       {
         "command": "formula-editor-vscode.openEditor",
-        "title": "数式エディタを開く"
+        "title": "%command.openEditor.title%"
       }
     ],
     "menus": {
@@ -60,6 +60,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@vscode/l10n": "^0.0.18",
     "mathlive": "^0.101.0",
     "vsce": "^2.15.0"
   },
