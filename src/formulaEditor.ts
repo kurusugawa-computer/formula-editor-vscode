@@ -50,7 +50,7 @@ export function getWebviewEditor(
       <div id="latex-text"></div>
       <div id="copy-button">
         <img id="icon" src=${imageUri} width="15px" height="20px" title="${uiStrings.copyTooltip}" onClick=copy()>
-        <p id="copied-text">${uiStrings.copyNotice}</p>
+        <p id="copied-text" class="hidden">${uiStrings.copyNotice}</p>
       </div>
     </div>
     <script>
