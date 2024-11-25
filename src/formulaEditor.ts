@@ -1,4 +1,11 @@
 import * as vscode from "vscode";
+import { getLocale } from "./extension";
+
+interface UIStrings {
+  lang: string;
+  copyTooltip: string;
+  copyNotice: string;
+}
 
 export function getWebviewEditor(
   extensionUri: vscode.Uri,
@@ -28,6 +35,7 @@ export function getWebviewEditor(
   const scriptUri = webview.asWebviewUri(scriptPathOnDisk);
   const stylesUri = webview.asWebviewUri(stylesPathOnDisk);
   const imageUri = webview.asWebviewUri(imagePathOnDisk);
+  const uiStrings = getUIStrings();
 
   return `<!DOCTYPE html>
 <html>
@@ -41,8 +49,8 @@ export function getWebviewEditor(
     <div id="copy-box">
       <div id="latex-text"></div>
       <div id="copy-button">
-        <img id="icon" src=${imageUri} width="15px" height="20px" title="latex形式でコピーする" onClick=copy()>
-        <p id="copied-text" class="hidden">コピーしました</p>
+        <img id="icon" src=${imageUri} width="15px" height="20px" title="${uiStrings.copyTooltip}" onClick=copy()>
+        <p id="copied-text">${uiStrings.copyNotice}</p>
       </div>
     </div>
     <script>
@@ -50,7 +58,7 @@ export function getWebviewEditor(
       mf.mathVirtualKeyboardPolicy = "sandboxed";
       mf.menuItems = mf.menuItems.filter(item => !(item.id == 'copy' || item.id == 'cut'));
 
-      MathfieldElement.locale = "ja";
+      MathfieldElement.locale = "${uiStrings.lang}";
 
       let formulaElement = document.getElementById('formula');
       let latexElement = document.getElementById('latex-text');
@@ -78,6 +86,36 @@ export function getWebviewEditor(
     </script>
   </body>
 </html>`;
+}
+
+function getUIStrings(): UIStrings {
+  const lang = getLocale();
+  let uiStrings: UIStrings;
+  switch (lang) {
+    case "ja":
+      uiStrings = {
+        lang: lang,
+        copyTooltip: "latex形式でコピー",
+        copyNotice: "コピーしました",
+      };
+      break;
+    case "en":
+      uiStrings = {
+        lang: lang,
+        copyTooltip: "copy latex format string",
+        copyNotice: "Copied!",
+      };
+      break;
+    default:
+      uiStrings = {
+        lang: lang,
+        copyTooltip: "copy latex format string",
+        copyNotice: "Copied!",
+      };
+      break;
+  }
+
+  return uiStrings;
 }
 
 /*

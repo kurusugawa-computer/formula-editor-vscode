@@ -23,7 +23,6 @@ math-field {
 }
 
 #copy-button {
-  position: relative;
   max-height: 20px;
 }
 
@@ -45,8 +44,8 @@ math-field {
 }
 
 #copied-text {
-  height: 15px;
-  width: 70px;
+  right: 15px;
+  bottom: 225px;
   padding: 3px 10px;
   border-radius: 6px;
   font-size: xx-small;
@@ -54,8 +53,6 @@ math-field {
   color: rgb(26, 26, 26);
   text-align: center;
   position: absolute;
-  right: -40px;
-  bottom: 20px;
 }
 
 .popup-message {

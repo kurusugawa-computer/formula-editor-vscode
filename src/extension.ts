@@ -1,4 +1,4 @@
-import * as l10n from '@vscode/l10n';
+import * as l10n from "@vscode/l10n";
 import * as vscode from "vscode";
 import { getWebviewEditor } from "./formulaEditor";
 
@@ -118,18 +118,19 @@ export function deactivate() {}
 /*
  * Utilities for l10n
  */
-function getLocale(): string {
-	return JSON.parse(process.env.VSCODE_NLS_CONFIG as string).locale;
+export function getLocale(): string {
+  return JSON.parse(process.env.VSCODE_NLS_CONFIG as string).locale;
 }
 
 function initializeL10n(baseUri: vscode.Uri, forcedLocale?: string) {
-	const defaultPackageNlsJson = "package.nls.json";
-	const locale: string = forcedLocale || getLocale();
-	const packageNlsJson = locale === 'en' ? defaultPackageNlsJson : `package.nls.${locale}.json`;
-	try {
-		l10n.config(vscode.Uri.joinPath(baseUri, packageNlsJson));
-	} catch {
-		console.warn("Cannot load l10n resource file:", packageNlsJson);
-		l10n.config(vscode.Uri.joinPath(baseUri, defaultPackageNlsJson));
-	}
+  const defaultPackageNlsJson = "package.nls.json";
+  const locale: string = forcedLocale || getLocale();
+  const packageNlsJson =
+    locale === "en" ? defaultPackageNlsJson : `package.nls.${locale}.json`;
+  try {
+    l10n.config(vscode.Uri.joinPath(baseUri, packageNlsJson));
+  } catch {
+    console.warn("Cannot load l10n resource file:", packageNlsJson);
+    l10n.config(vscode.Uri.joinPath(baseUri, defaultPackageNlsJson));
+  }
 }
