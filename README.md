@@ -12,10 +12,10 @@
 
 ## 🌟 Usage
 
-- Select the formula in Markdown that you want to edit.
-- Select "Open Formula Editor" from the Command Palette or right-click.
-- The formula editor opens. Press the keyboard icon to input using the virtual keyboard
-- When you are finished editing, press the copy icon to copy the latex format string of the formula to the clipboard.。
+- Select the range of the formula that you want to edit in the Markdown.
+- Open the command palette or right-click and choose "Open Equation Editor".
+- The formula editor will open. By pressing the keyboard icon, you can input using the virtual keyboard.
+- When you're done editing, press the copy icon to copy the LaTeX string of the formula to the clipboard.
 
 <img src="https://github.com/kurusugawa-computer/formula-editor-vscode/raw/main/images/usage.gif" alt="Basic Usage" width="1024">
 
