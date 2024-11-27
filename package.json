@@ -1,5 +1,5 @@
 {
-  "name": "formula-editor",
+  "name": "formula-editor-vscode",
   "displayName": "Formula Editor",
   "description": "WYSIWYG formula editor to get latex format string",
   "icon": "images/icon-128x128.png",

@@ -3,8 +3,8 @@
 
 # Formula Editor for Visual Studio Code
 
-[![Version](https://img.shields.io/vscode-marketplace/v/kurusugawa-computer.formula-editor.svg?style=flat-square&label=vscode%20marketplace)](https://marketplace.visualstudio.com/items?itemName=kurusugawa-computer.formula-editor)
-[![Downloads](https://img.shields.io/vscode-marketplace/d/kurusugawa-computer.formula-editor.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=kurusugawa-computer.formula-editor)
+[![Version](https://img.shields.io/vscode-marketplace/v/kurusugawa-computer.formula-editor-vscode.svg?style=flat-square&label=vscode%20marketplace)](https://marketplace.visualstudio.com/items?itemName=kurusugawa-computer.formula-editor-vscode)
+[![Downloads](https://img.shields.io/vscode-marketplace/d/kurusugawa-computer.formula-editor-vscode.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=kurusugawa-computer.formula-editor-vscode)
 [![GitHub stars](https://img.shields.io/github/stars/kurusugawa-computer/formula-editor-vscode.svg?style=flat-square&label=github%20stars)](https://github.com/kurusugawa-computer/formula-editor-vscode)
 [![GitHub Contributors](https://img.shields.io/github/contributors/kurusugawa-computer/formula-editor-vscode.svg?style=flat-square)](https://github.com/kurusugawa-computer/formula-editor-vscode/graphs/contributors)
 
