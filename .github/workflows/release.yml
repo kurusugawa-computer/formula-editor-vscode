@@ -24,8 +24,8 @@ jobs:
       - name: 📤 Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: markdown-copilot-${{github.sha}}
-          path: markdown-copilot-*.vsix
+          name: formula-editor-${{github.sha}}
+          path: formula-editor-*.vsix
       - name: 🚚 Publish to 🛒 Marketplace
         run: npm run vsce:publish
         env:
