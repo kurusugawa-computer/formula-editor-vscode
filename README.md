@@ -1,5 +1,5 @@
-[![en](https://img.shields.io/badge/English-blue.svg?style=flat-square)](https://github.com/kurusugawa-computer/formula-editor-vscode/blob/main/README.md)
-[![ja](https://img.shields.io/badge/日本語-red.svg?style=flat-square)](https://github.com/kurusugawa-computer/formula-editor-vscode/blob/main/README.ja.md)
+[![en](https://img.shields.io/badge/English-blue.svg?style=flat-square)](README.md)
+[![ja](https://img.shields.io/badge/日本語-red.svg?style=flat-square)](README.ja.md)
 
 # Formula Editor for Visual Studio Code
 
