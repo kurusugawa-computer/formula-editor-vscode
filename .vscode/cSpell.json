@@ -10,7 +10,8 @@
     "tsconfig.json",
     "webpack.config.js",
     "*.md",
-    "*.txt",
+    "LICENSE.txt",
+    "ThirdPartyNotices.txt",
     "src/public"
   ]
 }
