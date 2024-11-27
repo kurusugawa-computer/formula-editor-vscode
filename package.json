@@ -4,7 +4,7 @@
   "description": "WYSIWYG formula editor to get latex format string",
   "icon": "images/icon-128x128.png",
   "publisher": "kurusugawa-computer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.93.0"
   },
