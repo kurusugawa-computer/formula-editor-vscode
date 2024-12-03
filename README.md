@@ -13,7 +13,7 @@
 ## 🌟 Usage
 
 - Select the range of the formula that you want to edit in the Markdown.
-- Open the command palette or right-click and choose "Open Equation Editor".
+- Open the command palette or right-click and choose "Open Formula Editor".
 - The formula editor will open. By pressing the keyboard icon, you can input using the virtual keyboard.
 - When you're done editing, press the copy icon to copy the LaTeX string of the formula to the clipboard.
 
